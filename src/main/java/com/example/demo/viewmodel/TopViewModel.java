@@ -13,4 +13,12 @@ public class TopViewModel {
     public int getNowLeagueRank() {
         return nowLeagueRank;
     }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void setNowLeagueRank(int nowLeagueRank) {
+        this.nowLeagueRank = nowLeagueRank;
+    }
 }
