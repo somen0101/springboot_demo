@@ -17,7 +17,7 @@ public class TopController {
     @RequestMapping(value="/")
     public String top(Model model){
         model.addAttribute("teamName",topViewModel.getTeamName());
-        model.addAttribute("nowCurrentRank",topViewModel.getCurrentLeagueRank());
+        model.addAttribute("currentRank",topViewModel.getCurrentLeagueRank());
         return "top";
     }
 }
