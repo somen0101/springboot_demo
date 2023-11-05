@@ -12,21 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.example.demo.repository.MTeamDAO;
 import com.example.demo.viewmodel.TopViewModel;
 
 @Controller
 @EnableAutoConfiguration
 public class TopController {
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
     TopViewModel topViewModel = new TopViewModel();
+    @Autowired
+    private MTeamDAO mTeamDAO;
     @RequestMapping(value="/")
     public String top(Model model){
-        //DB接続後にSQL実行
-        List<Map<String,Object>> list;
-        list = jdbcTemplate.queryForList("select * from m_team");
-        System.out.println(list.toString());
+        mTeamDAO.findAllItem();
         model.addAttribute("teamName",topViewModel.getTeamName());
         model.addAttribute("currentRank",topViewModel.getCurrentLeagueRank());
         return "top";
